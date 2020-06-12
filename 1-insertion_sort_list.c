@@ -27,7 +27,7 @@ void insertion_sort_list(listint_t **list)
 					aux->prev->n = (int) aux->n ^ (int) aux->prev->n
 					aux->n = (int) aux->n ^ (int) aux->prev->n
 					aux = aux->prev;*/
-					(int) aux->n = (int) aux->n + 1;
+					aux->n = 1;
 
 				}
 				printf("%d, ", pList->n);
