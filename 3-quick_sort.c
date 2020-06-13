@@ -1,9 +1,10 @@
 #include "sort.h"
 
 /**
- * main - Entry point
- *
- * Return: Always 0
+ * quick_sort - sorts an array of integers in ascending order
+ * using the Quick sort algorithm
+ * @array: array of integers
+ * @size: number of elements in array
  */
 void quick_sort(int *array, size_t size)
 {
