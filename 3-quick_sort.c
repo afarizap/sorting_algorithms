@@ -30,20 +30,7 @@ void quick_sort(int *array, size_t size)
 	print_array(array, size);
 
 }
-/*
-	while (j < (int) size - 1)
-	{
-		if (array[j] < array[pivot])
-		{
-			i++;
-			swap_arr(&(*array), i, j);
-		}
-		j++;
-	}
-	print_array(array, size);
 
-}
-*/
 /**
  * main - Entry point
  *
