@@ -18,10 +18,16 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
+/* aux functions*/
+/*void swap(int dest, int orgn);*/
+void swap_arr(int *array, int dest, int origin);
+
+/* algoritmos duros*/
+void quick_sort(int *array, size_t size);
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
 void bubble_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
-void selection_sort(int *array, size_t size)
+void selection_sort(int *array, size_t size);
 
 #endif
