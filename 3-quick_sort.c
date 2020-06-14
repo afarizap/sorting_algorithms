@@ -18,24 +18,25 @@ void quick_sort(int *array, size_t size)
  * @array: array of numbers
  * @low: most left number from low sort
  * @high: most right number from high sort
+ * @size: number of elements in array
  */
 void quick(int *array, int low, int high, size_t size)
 {
-        int p = 0;
+	int p = 0;
 
-
-        if (low < high)
-        {
-            p = partition(array, low, high, size);
-            quick(array, low, p - 1, size);
-            quick(array, p + 1, high, size);
-        }
+	if (low < high)
+	{
+		p = partition(array, low, high, size);
+		quick(array, low, p - 1, size);
+		quick(array, p + 1, high, size);
+	}
 }
 /**
  * partition - splits the array in low and high
  * @array: array of integers
  * @low: most left number from low sort
  * @high: most right number from high sort
+ * @size: number of elements in array
  * Return: right index of i
  */
 int partition(int *array, int low, int high, size_t size)
@@ -59,6 +60,7 @@ int partition(int *array, int low, int high, size_t size)
  * @array: array of integers
  * @dest: first number
  * @origin: second number
+ * @size: number of elements in array
  */
 void swap_arr(int *array, int dest, int origin, size_t size)
 {
