@@ -1,16 +1,17 @@
 #include "sort.h"
 
 /**
- * main - Entry point
- *
- * Return: Always 0
+ * selection_sort - sorts an array of integers in ascending order using the
+ * Selection sort algorithm
+ * @array: array of integers
+ * @size: number of elements in array
  */
 void selection_sort(int *array, size_t size)
 {
 	size_t i, j, post;
 	int min = array[0];
 
-	if (size <= 2)
+	if (size < 2)
 		return;
 
 	/* ask me later for the -1 */

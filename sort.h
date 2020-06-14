@@ -24,6 +24,7 @@ typedef struct listint_s
 void quick(int *array, int low, int high, size_t size);
 int partition(int *array, int low, int high, size_t size);
 void swap_arr(int *array, int dest, int origin, size_t size);
+void shell_sort(int *array, size_t size);
 
 /* algoritmos duros*/
 void quick_sort(int *array, size_t size);

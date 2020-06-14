@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "sort.h"
+
 
 /**
  * quick_sort - sorts an array of integers in ascending order
@@ -10,6 +10,9 @@
 void quick_sort(int *array, size_t size)
 {
 	int low = 0, high = size - 1;
+
+	if (size < 2)
+		return;
 
 	quick(array, low, high, size);
 }
