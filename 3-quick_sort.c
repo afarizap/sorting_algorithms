@@ -1,6 +1,5 @@
 #include "sort.h"
 
-
 /**
  * quick_sort - sorts an array of integers in ascending order
  * using the Quick sort algorithm
@@ -9,53 +8,58 @@
  */
 void quick_sort(int *array, size_t size)
 {
-	int low = 0, high = size - 1;
+	int p = 0, r = size - 1;
 
-	if (size < 2)
-		return;
-
-	quick(array, low, high, size);
+	quick(array, p, r, size);
 }
+
 /**
- * quick - recursive quicksort
- * @array: array of numbers
- * @low: most left number from low sort
- * @high: most right number from high sort
+ * quick - sorts an array of integers in ascending order
+ * using the Quick sort algorithm
+ * @array: array of integers
+ * @p: first element in array
+ * @r: last element in array
  * @size: number of elements in array
  */
-void quick(int *array, int low, int high, size_t size)
+void quick(int *array, int p, int r, size_t size)
 {
-	int p = 0;
+	int q;
 
-	if (low < high)
+	if (p < r)
 	{
-		p = partition(array, low, high, size);
-		quick(array, low, p - 1, size);
-		quick(array, p + 1, high, size);
+		q = partition(array, p, r, size);
+		quick(array, p, q - 1, size);
+		quick(array, q + 1, r, size);
 	}
 }
 /**
- * partition - splits the array in low and high
+ * partition - Splits the array in low and high
  * @array: array of integers
- * @low: most left number from low sort
- * @high: most right number from high sort
+ * @p: first element in array
+ * @r: last element in array
  * @size: number of elements in array
- * Return: right index of i
+ * Return: i + 1
  */
-int partition(int *array, int low, int high, size_t size)
+int partition(int *array, int p, int r, size_t size)
 {
-	int pivot = array[high], i, j;
+	int i = p - 1, j;
 
-	i = low - 1;
-	for (j = low; j <= high - 1; j++)
+	for (j = p; j <= r - 1;)
 	{
-		if (array[j] <= pivot)
+		if (array[j] <= array[r])
 		{
 			i++;
 			swap_arr(array, i, j, size);
+			if (i < j)
+				print_array(array, size);
+			j++;
 		}
+		else
+			j++;
 	}
-	swap_arr(array, i + 1, high, size);
+	swap_arr(array, i + 1, r, size);
+	if (i + 1 < r)
+		print_array(array, size);
 	return (i + 1);
 }
 /**
@@ -63,16 +67,16 @@ int partition(int *array, int low, int high, size_t size)
  * @array: array of integers
  * @dest: first number
  * @origin: second number
- * @size: number of elements in array
+ * @size: size of array
  */
 void swap_arr(int *array, int dest, int origin, size_t size)
 {
-	if (dest != origin)
+	(void) size;
+
+	if (array[dest] != array[origin])
 	{
 		array[dest] = array[dest] ^ array[origin];
 		array[origin] = array[dest] ^ array[origin];
 		array[dest] = array[dest] ^ array[origin];
-		print_array(array, size);
 	}
 }
-

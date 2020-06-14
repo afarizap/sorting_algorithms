@@ -21,10 +21,10 @@ typedef struct listint_s
 } listint_t;
 
 /* aux functions*/
-void quick(int *array, int low, int high, size_t size);
-int partition(int *array, int low, int high, size_t size);
+void quick(int *array, int p, int r, size_t size);
+int partition(int *array, int p, int r, size_t size);
 void swap_arr(int *array, int dest, int origin, size_t size);
-void shell_sort(int *array, size_t size);
+int compare_ints(int *array, size_t size, const void *p, const void *q);
 
 /* algoritmos duros*/
 void quick_sort(int *array, size_t size);
