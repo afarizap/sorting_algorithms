@@ -1,4 +1,5 @@
-#include "sort.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * quick_sort - sorts an array of integers in ascending order
@@ -8,38 +9,65 @@
  */
 void quick_sort(int *array, size_t size)
 {
-	int pivot = array[size - 1], i = -1, j = 0;
-	/* i = posicion - 1*/
+	int low = 0, high = size - 1;
 
-	if (size <= 2)
-		return;
+	quick(array, low, high, size);
+}
+/**
+ * quick - recursive quicksort
+ * @array: array of numbers
+ * @low: most left number from low sort
+ * @high: most right number from high sort
+ */
+void quick(int *array, int low, int high, size_t size)
+{
+        int p = 0;
 
-	/* Normalizar el array */
-	/* avoid to mark the pivot*/
-	while (j < (int) size - 1)
+
+        if (low < high)
+        {
+            p = partition(array, low, high, size);
+            quick(array, low, p - 1, size);
+            quick(array, p + 1, high, size);
+        }
+}
+/**
+ * partition - splits the array in low and high
+ * @array: array of integers
+ * @low: most left number from low sort
+ * @high: most right number from high sort
+ * Return: right index of i
+ */
+int partition(int *array, int low, int high, size_t size)
+{
+	int pivot = array[high], i, j;
+
+	i = low - 1;
+	for (j = low; j <= high - 1; j++)
 	{
-		if (array[j] < array[pivot])
+		if (array[j] <= pivot)
 		{
 			i++;
-			array[i] = array[i] ^ array[j];
-			array[j] = array[i] ^ array[j];
-			array[i] = array[i] ^ array[j];
-			/*swap_arr(&array, i, j);*/
+			swap_arr(array, i, j, size);
 		}
-		j++;
 	}
-	print_array(array, size);
-
+	swap_arr(array, i + 1, high, size);
+	return (i + 1);
 }
-
 /**
- * main - Entry point
- *
- * Return: Always 0
+ * swap_arr - swap two array indexes dest with origin
+ * @array: array of integers
+ * @dest: first number
+ * @origin: second number
  */
-void swap_arr(int *array, int dest, int origin)
+void swap_arr(int *array, int dest, int origin, size_t size)
 {
-	array[dest] = array[dest] ^ array[origin];
-	array[origin] = array[dest] ^ array[origin];
-	array[dest] = array[dest] ^ array[origin];
+	if (dest != origin)
+	{
+		array[dest] = array[dest] ^ array[origin];
+		array[origin] = array[dest] ^ array[origin];
+		array[dest] = array[dest] ^ array[origin];
+		print_array(array, size);
+	}
 }
+
