@@ -18,6 +18,7 @@ void swap(int *array, int dest, int origin);
 void shell_sort(int *array, size_t size)
 {
 	int gap = 1, i = 0, j = 0;
+	int de_patras = size - 1;
 	/*Found the gap*/
 	if (size < 2 || array == NULL)
 		return;
@@ -34,8 +35,21 @@ void shell_sort(int *array, size_t size)
 				swap(array, i, j);
 			j--, i--;
 		}
+		print_array(array, size);
 		gap = (gap - 1) /3;
-		if ()
+		if (gap == 1)
+		{
+			while (de_patras >= 0)
+			{
+				while (array[de_patras] > array[de_patras + 1])
+				{
+					swap(array, de_patras, de_patras + 1), de_patras++;
+					printf("%d == ", array[de_patras]);
+				}
+				de_patras--;
+			}
+			return;
+		}
 	}
 }
 
