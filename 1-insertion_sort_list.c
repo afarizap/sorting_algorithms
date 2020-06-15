@@ -36,7 +36,13 @@ void insertion_sort_list(listint_t **list)
 		&& move_node->n < move_node->prev->n)
 		{
 			/* moverse pa tras*/
-			put_linkedk(move_node);
+			move_node->prev->next = move_node->next;
+			if (move_node->next != NULL)
+				move_node->next->prev = move_node->prev;
+			move_node->next = move_node->prev;
+			/* change pointers to outer nodes */
+			move_node->prev = move_node->prev->prev;
+			move_node->next->prev = move_node;
 			if (move_node->prev == NULL)
 				*list = move_node;
 			else
