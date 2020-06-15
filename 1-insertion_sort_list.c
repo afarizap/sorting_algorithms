@@ -47,7 +47,3 @@ void insertion_sort_list(listint_t **list)
 		move_node = move_node->next;
 	}
 }
-	while (array[padelante] < array[padelante - 1])
-					swap(array, padelante - 1, padelante), padelante++;
-				de_patras--;
-			
