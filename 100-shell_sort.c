@@ -35,6 +35,7 @@ void shell_sort(int *array, size_t size)
 			j--, i--;
 		}
 		gap = (gap - 1) /3;
+<<<<<<< HEAD
 		print_array(array, size);
 	}
 	j = (size - 1) - gap, i = size - 1;
@@ -47,6 +48,9 @@ void shell_sort(int *array, size_t size)
 		}
 		else
 			j--, i--;
+=======
+		if ()
+>>>>>>> 1e27288383d287838d058d34cd5a48bfe0af0d0b
 	}
 	print_array(array, size);
 }
