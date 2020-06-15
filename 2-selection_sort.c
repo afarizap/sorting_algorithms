@@ -8,10 +8,10 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j, post;
+	size_t i, j, post, temp;
 	int min = array[0];
 
-	if (size < 2)
+	if (size < 2 || array == NULL)
 		return;
 
 	/* ask me later for the -1 */
@@ -30,9 +30,9 @@ void selection_sort(int *array, size_t size)
 		/* this is for avoid repeats or the order*/
 		if (post != i)
 		{
-			array[i] = array[i] ^ array[post];
-			array[post] = array[i] ^ array[post];
-			array[i] = array[i] ^ array[post];
+			temp = array[i];
+			array[i] = array[post];
+			array[post] = temp;
 			print_array(array, size);
 		}
 	}
