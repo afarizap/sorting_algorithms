@@ -25,25 +25,21 @@ void shell_sort(int *array, size_t size)
 				swap(array, i, j);
 			j--, i--;
 		}
-		print_array(array, size);
 		gap = (gap - 1) / 3;
-		if (gap == 1)
-		{
-			j = (size - 1) - gap, i = size - 1;
-			while (i >= 0)
-			{
-				if (array[i] < array[j])
-				{
-					swap(array, i, j);
-					j = (size - 1) - gap, i = size - 1;
-				}
-				else
-					j--, i--;
-			}
-			print_array(array, size);
-			return;
-		}
+		print_array(array, size);
 	}
+	j = (size - 1) - gap, i = size - 1;
+	while (i >= 0)
+	{
+		if (array[i] < array[j])
+		{
+			swap(array, i, j);
+			j = (size - 1) - gap, i = size - 1;
+		}
+		else
+			j--, i--;
+	}
+	print_array(array, size);
 }
 /**
  * swap - swap two numbers by xor
