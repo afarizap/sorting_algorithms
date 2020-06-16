@@ -25,6 +25,8 @@ void quick(int *array, int p, int r, size_t size);
 int partition(int *array, int p, int r, size_t size);
 void swap_arr(int *array, int dest, int origin, size_t size);
 int compare_ints(int *array, size_t size, const void *p, const void *q);
+void bbl_up(listint_t *pointer);
+void bbl_down(listint_t *pointer);
 
 /* algoritmos duros*/
 void quick_sort(int *array, size_t size);
@@ -35,5 +37,6 @@ void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
 listint_t swapdll(listint_t **list);
 void shell_sort(int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
 
 #endif
