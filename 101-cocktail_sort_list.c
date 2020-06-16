@@ -21,7 +21,7 @@ void cocktail_sort_list(listint_t **list)
 		return;
         for (; j > 0; j--)
         {
-		i = j - 1;
+		i = j;
 		for (; j > 0; j--)
 		{
 			if (aux->next->n < aux->n)
@@ -32,19 +32,21 @@ void cocktail_sort_list(listint_t **list)
 			else
 				aux = aux->next;
 		}
-		for (; i > j - 1; j++)
+		for (; i > j; j++)
 		{
 			if (aux->prev->n > aux->n)
 			{
 				bbl_down(aux);
-				if (aux->n > (*list)->n)
-					*list = (*list)->prev;
+				if (aux->n < (*list)->n && i - j <2)
+					*list = aux;
 				print_list(*list);
 			}
 			else
+			{
 				aux = aux->prev;
+			}
 		}
-		*list = aux;
+		/* *list = aux; */
 	}
 }
 /**
