@@ -1,26 +1,23 @@
 #include "sort.h"
 /**
- * cocktail_sort_list - sorts a dllist of int using the
- * Cocktail shaker sort algorithm
+ * cocktail_sort_list - sorts a dllist with Cocktail shaker sort algorithm
  * @list: ddl
  */
 void cocktail_sort_list(listint_t **list)
 {
 	int i = 0, j = 0;
-	listint_t *aux1, *aux;
+	listint_t *aux1 = *list, *aux = *list;
 
-	aux1 = aux = *list;
+	if (list == NULL || *list == NULL)
+		return;
 	if (aux1)
-	{
 		for (; aux1->next; j++)
-		aux1 = aux1->next;
-		aux1 = NULL;
-	}
+			aux1 = aux1->next;
 	else
 		return;
 	for (; j > 0; j--)
 	{
-		i = j - 1;
+		i = j;
 		for (; j > 0; j--)
 		{
 			if (aux->next->n < aux->n)
@@ -31,24 +28,22 @@ void cocktail_sort_list(listint_t **list)
 			else
 				aux = aux->next;
 		}
-
-		for (; i > j - 1; j++)
+		for (; i > j; j++)
 		{
 			if (aux->prev->n > aux->n)
 			{
 				bbl_down(aux);
-				if (aux->n > (*list)->n)
-					*list = (*list)->prev;
+				if (aux->n < (*list)->n && i - j < 2)
+					*list = aux;
 				print_list(*list);
 			}
 			else
 				aux = aux->prev;
 		}
-		*list = aux;
 	}
 }
 /**
- * bbl_up - change the nodes backward
+ * bbl_up - change the nodes foward
  * @pointer: The node it will change
  */
 void bbl_up(listint_t *pointer)
