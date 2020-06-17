@@ -8,7 +8,7 @@ void cocktail_sort_list(listint_t **list)
 	int i = 0, j = 0;
 	listint_t *aux1 = *list, *aux = *list;
 
-	if (list == NULL)
+	if (list == NULL || *list == NULL)
 		return;
 	if (aux1)
 		for (; aux1->next; j++)
