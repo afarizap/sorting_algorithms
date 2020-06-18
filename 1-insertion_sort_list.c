@@ -26,14 +26,15 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *move_node = NULL;
 
-	if (*list == NULL || (*list)->next == NULL || list == NULL)
+	if (*list == NULL || (*list)->next == NULL || list == NULL ||
+		**list == NULL)
 		return;
 
 	move_node = (*list)->next;
 	while (move_node != NULL || (*list)->next == NULL)
 	{
-		while (move_node->prev != NULL
-		&& move_node->n < move_node->prev->n)
+		while ((move_node->prev != NULL) &&
+		       (move_node->n < move_node->prev->n))
 		{
 			/* moverse pa tras*/
 			put_linkedk(move_node);
