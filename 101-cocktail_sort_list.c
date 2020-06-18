@@ -71,7 +71,6 @@ void bbl_up(listint_t *pointer)
 		pointer->next = NULL;
 	pointer->prev = low;
 	low->next = pointer;
-
 }
 /**
  * bbl_down - change the nodes backward
