@@ -1,5 +1,5 @@
 #include "sort.h"
-
+void bubble_sort(int *array, size_t size);
 void swap(int *array, int dest, int origin);
 /**
  * shell_sort - sort array by shell method using knuth's number
@@ -9,36 +9,21 @@ void swap(int *array, int dest, int origin);
  */
 void shell_sort(int *array, size_t size)
 {
-	int gap, i = 0, j = 0, knut = 0;
+	int i, j, knut = 1;
 	/*Find the gap*/
-	if (size < 2 || array == NULL)
+	if (size < 2 || !array)
 		return;
 	while ((knut * 3) + 1 < (int)size)
 		knut = (knut * 3) + 1;
-	gap = knut;
-	while (gap > 1)
+	for (i = size - 1, j = i - knut; knut > 1; i = size - 1, j = i - knut)
 	{
-		j = (size - 1) - gap, i = size - 1;
-		while (j >= 0)
-		{
+		for (;j > -1; j--, i--)
 			if (array[i] < array[j])
 				swap(array, i, j);
-			j--, i--;
-		}
-		gap = (gap - 1) / 3;
+		knut = (knut - 1) / 3;
 		print_array(array, size);
 	}
-	j = (size - 1) - gap, i = size - 1;
-	while (i >= 0)
-	{
-		if (array[i] < array[j])
-		{
-			swap(array, i, j);
-			j = (size - 1) - gap, i = size - 1;
-		}
-		else
-			j--, i--;
-	}
+	bubble_sort(array, size);
 	print_array(array, size);
 }
 /**
@@ -49,10 +34,34 @@ void shell_sort(int *array, size_t size)
  */
 void swap(int *array, int dest, int origin)
 {
-	if (array[dest] != array[origin])
-	{
-		array[dest] = array[dest] ^ array[origin];
-		array[origin] = array[dest] ^ array[origin];
-		array[dest] = array[dest] ^ array[origin];
-	}
+	int t;
+
+	t = array[dest];
+	array[dest] = array[origin];
+	array[origin] = t;
+}
+/**
+ * bubble_sort - sorts an array of integers in ascending order
+ * @array: array of integers
+ * @size: number of elements in the array
+ */
+void bubble_sort(int *array, size_t size)
+{
+        size_t i = 0, s = 1;
+        int t = 0;
+
+        if (size < 2 || array == NULL)
+                return;
+
+        while (s != 0)
+                for (i = 0, s = 0; i < size - 1; i++)
+                {
+                        if (array[i] > array[i + 1])
+                        {
+                                s++;
+                                t = array[i];
+                                array[i] = array[i + 1];
+                                array[i + 1] = t;
+                        }
+                }
 }
