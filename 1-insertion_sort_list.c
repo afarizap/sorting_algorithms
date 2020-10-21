@@ -26,7 +26,7 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *move_node = NULL;
 
-	if (!list)
+	if (!list || !(*list)->next)
 		return;
 
 	move_node = (*list)->next;
