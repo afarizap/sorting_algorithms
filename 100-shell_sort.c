@@ -11,7 +11,7 @@ void shell_sort(int *array, size_t size)
 {
 	int i, j, knut = 1;
 	/*Find the gap*/
-	if (size < 2 || !array)
+	if (size < 1 || !array)
 		return;
 	while ((knut * 3) + 1 < (int)size)
 		knut = (knut * 3) + 1;
