@@ -1,5 +1,5 @@
 #include "sort.h"
-
+void swap_arr1(int *array, int dest, int origin, size_t size);
 /**
  * quick_sort - sorts an array of integers in ascending order
  * using the Quick sort algorithm
@@ -10,6 +10,8 @@ void quick_sort(int *array, size_t size)
 {
 	int p = 0, r = size - 1;
 
+	if (!array || size <= 2)
+		return;
 	quick(array, p, r, size);
 }
 
@@ -49,7 +51,7 @@ int partition(int *array, int p, int r, size_t size)
 		if (array[j] <= array[r])
 		{
 			i++;
-			swap_arr(array, i, j, size);
+			swap_arr1(array, i, j, size);
 			if (i < j)
 				print_array(array, size);
 			j++;
@@ -57,19 +59,19 @@ int partition(int *array, int p, int r, size_t size)
 		else
 			j++;
 	}
-	swap_arr(array, i + 1, r, size);
+	swap_arr1(array, i + 1, r, size);
 	if (i + 1 < r)
 		print_array(array, size);
 	return (i + 1);
 }
 /**
- * swap_arr - swap two array indexes dest with origin
+ * swap_arr1 - swap two array indexes dest with origin
  * @array: array of integers
  * @dest: first number
  * @origin: second number
  * @size: size of array
  */
-void swap_arr(int *array, int dest, int origin, size_t size)
+void swap_arr1(int *array, int dest, int origin, size_t size)
 {
 	(void) size;
 
